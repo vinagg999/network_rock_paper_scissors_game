@@ -66,8 +66,8 @@ def start_server():
     btnStop.config(state=tk.NORMAL)
 
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    print((socket.AF_INET))
-    print((socket.SOCK_STREAM))
+    print (socket.AF_INET)
+    print (socket.SOCK_STREAM)
 
     server.bind((HOST_ADDR, HOST_PORT))
     server.listen(5)  # server is listening for client connection
@@ -143,10 +143,10 @@ def Start_Round():
     #code to distribute cards to the clients and show them only their cards
 
     for a in clients:
+        print("hand1"+hands[a]["1"])
+        print("hand2"+hands[a]["2"])
         a.send("hand1"+hands[a]["1"])
-        # a.send("#")
         a.send("hand2"+hands[a]["2"])
-        # a.send("#")
 
     btnStartRound.config(state=tk.DISABLED)
     btnShowFlop.config(state=tk.NORMAL)
@@ -158,12 +158,8 @@ def Show_Flop():
 
     for a in clients:
         a.send("flop1"+flops[0])
-        # a.send("#")
         a.send("flop2"+flops[1])
-        # a.send("#")
         a.send("flop3"+flops[2])
-        # a.send("#")
-
 
     btnShowFlop.config(state=tk.DISABLED)
     btnShowTurn.config(state=tk.NORMAL)
@@ -175,7 +171,6 @@ def Show_Turn():
 
     for a in clients:
         a.send("turn"+turns[0])
-        # a.send("#")
 
     btnShowTurn.config(state=tk.DISABLED)
     btnShowRiver.config(state=tk.NORMAL)
@@ -187,7 +182,6 @@ def Show_River():
 
     for a in clients:
         a.send("river"+rivers[0])
-        # a.send("#")
 
     btnShowRiver.config(state=tk.DISABLED)
     btnStartRound.config(state=tk.NORMAL)
